@@ -1,0 +1,58 @@
+{
+  "rest": {
+    "leitura": {
+      "req": 0,
+      "res": 39
+    },
+    "lista": {
+      "req": 0,
+      "res": 27914
+    },
+    "composta": {
+      "req": 0,
+      "res": 690
+    }
+  },
+  "graphql": {
+    "leitura": {
+      "req": 84,
+      "res": 62
+    },
+    "lista": {
+      "req": 43,
+      "res": 28935
+    },
+    "composta": {
+      "req": 133,
+      "res": 694
+    }
+  },
+  "grpc": {
+    "leitura": {
+      "req": 2,
+      "res": 16
+    },
+    "lista": {
+      "req": 0,
+      "res": 12765
+    },
+    "composta": {
+      "req": 0,
+      "res": 275
+    }
+  },
+  "soap": {
+    "leitura": {
+      "req": 321,
+      "res": 346
+    },
+    "lista": {
+      "req": 313,
+      "res": 44688
+    },
+    "composta": {
+      "req": 1003,
+      "res": 2120
+    }
+  }
+}
