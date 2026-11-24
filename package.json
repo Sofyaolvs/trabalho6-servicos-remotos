@@ -1,0 +1,1 @@
+{"name":"trabalho6-servicos-remotos","version":"1.0.0","private":true,"type":"module","dependencies":{"@grpc/grpc-js":"^1.14.7","@grpc/proto-loader":"^0.8.1","express":"^5.3.0","graphql":"^17.1.0","pptxgenjs":"^4.0.1","soap":"^1.14.1"}}
