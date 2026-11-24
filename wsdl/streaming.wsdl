@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="StreamingService" targetNamespace="http://streaming.exemplo.com/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://streaming.exemplo.com/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://streaming.exemplo.com/" elementFormDefault="qualified">
+      <xsd:complexType name="Usuario"><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="0" maxOccurs="1"/><xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"/><xsd:element name="idade" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType>
+      <xsd:complexType name="Musica"><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="0" maxOccurs="1"/><xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"/><xsd:element name="artista" type="xsd:string" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType>
+      <xsd:complexType name="Playlist"><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="0" maxOccurs="1"/><xsd:element name="nome" type="xsd:string" minOccurs="1" maxOccurs="1"/><xsd:element name="usuarioId" type="xsd:int" minOccurs="1" maxOccurs="1"/><xsd:element name="musicaId" type="xsd:int" minOccurs="1" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType>
+      <xsd:element name="ListarUsuarios"><xsd:complexType><xsd:sequence></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarUsuariosResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Usuario" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterUsuario"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Usuario" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarUsuario"><xsd:complexType><xsd:sequence><xsd:element name="usuario" type="tns:Usuario" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Usuario" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarUsuario"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/><xsd:element name="usuario" type="tns:Usuario" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Usuario" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverUsuario"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="xsd:boolean" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarMusicas"><xsd:complexType><xsd:sequence></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarMusicasResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Musica" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterMusica"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Musica" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarMusica"><xsd:complexType><xsd:sequence><xsd:element name="musica" type="tns:Musica" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Musica" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarMusica"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/><xsd:element name="musica" type="tns:Musica" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Musica" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverMusica"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="xsd:boolean" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarPlaylists"><xsd:complexType><xsd:sequence></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarPlaylistsResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Playlist" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ObterPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Playlist" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="playlist" type="tns:Playlist" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="CriarPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Playlist" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/><xsd:element name="playlist" type="tns:Playlist" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="AtualizarPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Playlist" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="RemoverPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="xsd:boolean" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarPlaylistsDoUsuario"><xsd:complexType><xsd:sequence><xsd:element name="usuarioId" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarPlaylistsDoUsuarioResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Playlist" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarMusicasDaPlaylist"><xsd:complexType><xsd:sequence><xsd:element name="playlistId" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarMusicasDaPlaylistResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Musica" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarPlaylistsDaMusica"><xsd:complexType><xsd:sequence><xsd:element name="musicaId" type="xsd:int" minOccurs="1" maxOccurs="1"/></xsd:sequence></xsd:complexType></xsd:element>
+      <xsd:element name="ListarPlaylistsDaMusicaResponse"><xsd:complexType><xsd:sequence><xsd:element name="resultado" type="tns:Playlist" minOccurs="0" maxOccurs="unbounded"/></xsd:sequence></xsd:complexType></xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ListarUsuariosIn"><wsdl:part name="parameters" element="tns:ListarUsuarios"/></wsdl:message>
+  <wsdl:message name="ListarUsuariosOut"><wsdl:part name="parameters" element="tns:ListarUsuariosResponse"/></wsdl:message>
+  <wsdl:message name="ObterUsuarioIn"><wsdl:part name="parameters" element="tns:ObterUsuario"/></wsdl:message>
+  <wsdl:message name="ObterUsuarioOut"><wsdl:part name="parameters" element="tns:ObterUsuarioResponse"/></wsdl:message>
+  <wsdl:message name="CriarUsuarioIn"><wsdl:part name="parameters" element="tns:CriarUsuario"/></wsdl:message>
+  <wsdl:message name="CriarUsuarioOut"><wsdl:part name="parameters" element="tns:CriarUsuarioResponse"/></wsdl:message>
+  <wsdl:message name="AtualizarUsuarioIn"><wsdl:part name="parameters" element="tns:AtualizarUsuario"/></wsdl:message>
+  <wsdl:message name="AtualizarUsuarioOut"><wsdl:part name="parameters" element="tns:AtualizarUsuarioResponse"/></wsdl:message>
+  <wsdl:message name="RemoverUsuarioIn"><wsdl:part name="parameters" element="tns:RemoverUsuario"/></wsdl:message>
+  <wsdl:message name="RemoverUsuarioOut"><wsdl:part name="parameters" element="tns:RemoverUsuarioResponse"/></wsdl:message>
+  <wsdl:message name="ListarMusicasIn"><wsdl:part name="parameters" element="tns:ListarMusicas"/></wsdl:message>
+  <wsdl:message name="ListarMusicasOut"><wsdl:part name="parameters" element="tns:ListarMusicasResponse"/></wsdl:message>
+  <wsdl:message name="ObterMusicaIn"><wsdl:part name="parameters" element="tns:ObterMusica"/></wsdl:message>
+  <wsdl:message name="ObterMusicaOut"><wsdl:part name="parameters" element="tns:ObterMusicaResponse"/></wsdl:message>
+  <wsdl:message name="CriarMusicaIn"><wsdl:part name="parameters" element="tns:CriarMusica"/></wsdl:message>
+  <wsdl:message name="CriarMusicaOut"><wsdl:part name="parameters" element="tns:CriarMusicaResponse"/></wsdl:message>
+  <wsdl:message name="AtualizarMusicaIn"><wsdl:part name="parameters" element="tns:AtualizarMusica"/></wsdl:message>
+  <wsdl:message name="AtualizarMusicaOut"><wsdl:part name="parameters" element="tns:AtualizarMusicaResponse"/></wsdl:message>
+  <wsdl:message name="RemoverMusicaIn"><wsdl:part name="parameters" element="tns:RemoverMusica"/></wsdl:message>
+  <wsdl:message name="RemoverMusicaOut"><wsdl:part name="parameters" element="tns:RemoverMusicaResponse"/></wsdl:message>
+  <wsdl:message name="ListarPlaylistsIn"><wsdl:part name="parameters" element="tns:ListarPlaylists"/></wsdl:message>
+  <wsdl:message name="ListarPlaylistsOut"><wsdl:part name="parameters" element="tns:ListarPlaylistsResponse"/></wsdl:message>
+  <wsdl:message name="ObterPlaylistIn"><wsdl:part name="parameters" element="tns:ObterPlaylist"/></wsdl:message>
+  <wsdl:message name="ObterPlaylistOut"><wsdl:part name="parameters" element="tns:ObterPlaylistResponse"/></wsdl:message>
+  <wsdl:message name="CriarPlaylistIn"><wsdl:part name="parameters" element="tns:CriarPlaylist"/></wsdl:message>
+  <wsdl:message name="CriarPlaylistOut"><wsdl:part name="parameters" element="tns:CriarPlaylistResponse"/></wsdl:message>
+  <wsdl:message name="AtualizarPlaylistIn"><wsdl:part name="parameters" element="tns:AtualizarPlaylist"/></wsdl:message>
+  <wsdl:message name="AtualizarPlaylistOut"><wsdl:part name="parameters" element="tns:AtualizarPlaylistResponse"/></wsdl:message>
+  <wsdl:message name="RemoverPlaylistIn"><wsdl:part name="parameters" element="tns:RemoverPlaylist"/></wsdl:message>
+  <wsdl:message name="RemoverPlaylistOut"><wsdl:part name="parameters" element="tns:RemoverPlaylistResponse"/></wsdl:message>
+  <wsdl:message name="ListarPlaylistsDoUsuarioIn"><wsdl:part name="parameters" element="tns:ListarPlaylistsDoUsuario"/></wsdl:message>
+  <wsdl:message name="ListarPlaylistsDoUsuarioOut"><wsdl:part name="parameters" element="tns:ListarPlaylistsDoUsuarioResponse"/></wsdl:message>
+  <wsdl:message name="ListarMusicasDaPlaylistIn"><wsdl:part name="parameters" element="tns:ListarMusicasDaPlaylist"/></wsdl:message>
+  <wsdl:message name="ListarMusicasDaPlaylistOut"><wsdl:part name="parameters" element="tns:ListarMusicasDaPlaylistResponse"/></wsdl:message>
+  <wsdl:message name="ListarPlaylistsDaMusicaIn"><wsdl:part name="parameters" element="tns:ListarPlaylistsDaMusica"/></wsdl:message>
+  <wsdl:message name="ListarPlaylistsDaMusicaOut"><wsdl:part name="parameters" element="tns:ListarPlaylistsDaMusicaResponse"/></wsdl:message>
+  <wsdl:portType name="StreamingPortType">
+    <wsdl:operation name="ListarUsuarios"><wsdl:input message="tns:ListarUsuariosIn"/><wsdl:output message="tns:ListarUsuariosOut"/></wsdl:operation>
+    <wsdl:operation name="ObterUsuario"><wsdl:input message="tns:ObterUsuarioIn"/><wsdl:output message="tns:ObterUsuarioOut"/></wsdl:operation>
+    <wsdl:operation name="CriarUsuario"><wsdl:input message="tns:CriarUsuarioIn"/><wsdl:output message="tns:CriarUsuarioOut"/></wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario"><wsdl:input message="tns:AtualizarUsuarioIn"/><wsdl:output message="tns:AtualizarUsuarioOut"/></wsdl:operation>
+    <wsdl:operation name="RemoverUsuario"><wsdl:input message="tns:RemoverUsuarioIn"/><wsdl:output message="tns:RemoverUsuarioOut"/></wsdl:operation>
+    <wsdl:operation name="ListarMusicas"><wsdl:input message="tns:ListarMusicasIn"/><wsdl:output message="tns:ListarMusicasOut"/></wsdl:operation>
+    <wsdl:operation name="ObterMusica"><wsdl:input message="tns:ObterMusicaIn"/><wsdl:output message="tns:ObterMusicaOut"/></wsdl:operation>
+    <wsdl:operation name="CriarMusica"><wsdl:input message="tns:CriarMusicaIn"/><wsdl:output message="tns:CriarMusicaOut"/></wsdl:operation>
+    <wsdl:operation name="AtualizarMusica"><wsdl:input message="tns:AtualizarMusicaIn"/><wsdl:output message="tns:AtualizarMusicaOut"/></wsdl:operation>
+    <wsdl:operation name="RemoverMusica"><wsdl:input message="tns:RemoverMusicaIn"/><wsdl:output message="tns:RemoverMusicaOut"/></wsdl:operation>
+    <wsdl:operation name="ListarPlaylists"><wsdl:input message="tns:ListarPlaylistsIn"/><wsdl:output message="tns:ListarPlaylistsOut"/></wsdl:operation>
+    <wsdl:operation name="ObterPlaylist"><wsdl:input message="tns:ObterPlaylistIn"/><wsdl:output message="tns:ObterPlaylistOut"/></wsdl:operation>
+    <wsdl:operation name="CriarPlaylist"><wsdl:input message="tns:CriarPlaylistIn"/><wsdl:output message="tns:CriarPlaylistOut"/></wsdl:operation>
+    <wsdl:operation name="AtualizarPlaylist"><wsdl:input message="tns:AtualizarPlaylistIn"/><wsdl:output message="tns:AtualizarPlaylistOut"/></wsdl:operation>
+    <wsdl:operation name="RemoverPlaylist"><wsdl:input message="tns:RemoverPlaylistIn"/><wsdl:output message="tns:RemoverPlaylistOut"/></wsdl:operation>
+    <wsdl:operation name="ListarPlaylistsDoUsuario"><wsdl:input message="tns:ListarPlaylistsDoUsuarioIn"/><wsdl:output message="tns:ListarPlaylistsDoUsuarioOut"/></wsdl:operation>
+    <wsdl:operation name="ListarMusicasDaPlaylist"><wsdl:input message="tns:ListarMusicasDaPlaylistIn"/><wsdl:output message="tns:ListarMusicasDaPlaylistOut"/></wsdl:operation>
+    <wsdl:operation name="ListarPlaylistsDaMusica"><wsdl:input message="tns:ListarPlaylistsDaMusicaIn"/><wsdl:output message="tns:ListarPlaylistsDaMusicaOut"/></wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StreamingBinding" type="tns:StreamingPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ListarUsuarios"><soap:operation soapAction="http://streaming.exemplo.com/ListarUsuarios"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="ObterUsuario"><soap:operation soapAction="http://streaming.exemplo.com/ObterUsuario"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="CriarUsuario"><soap:operation soapAction="http://streaming.exemplo.com/CriarUsuario"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="AtualizarUsuario"><soap:operation soapAction="http://streaming.exemplo.com/AtualizarUsuario"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="RemoverUsuario"><soap:operation soapAction="http://streaming.exemplo.com/RemoverUsuario"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="ListarMusicas"><soap:operation soapAction="http://streaming.exemplo.com/ListarMusicas"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="ObterMusica"><soap:operation soapAction="http://streaming.exemplo.com/ObterMusica"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="CriarMusica"><soap:operation soapAction="http://streaming.exemplo.com/CriarMusica"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="AtualizarMusica"><soap:operation soapAction="http://streaming.exemplo.com/AtualizarMusica"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="RemoverMusica"><soap:operation soapAction="http://streaming.exemplo.com/RemoverMusica"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="ListarPlaylists"><soap:operation soapAction="http://streaming.exemplo.com/ListarPlaylists"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="ObterPlaylist"><soap:operation soapAction="http://streaming.exemplo.com/ObterPlaylist"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="CriarPlaylist"><soap:operation soapAction="http://streaming.exemplo.com/CriarPlaylist"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="AtualizarPlaylist"><soap:operation soapAction="http://streaming.exemplo.com/AtualizarPlaylist"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="RemoverPlaylist"><soap:operation soapAction="http://streaming.exemplo.com/RemoverPlaylist"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="ListarPlaylistsDoUsuario"><soap:operation soapAction="http://streaming.exemplo.com/ListarPlaylistsDoUsuario"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="ListarMusicasDaPlaylist"><soap:operation soapAction="http://streaming.exemplo.com/ListarMusicasDaPlaylist"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+    <wsdl:operation name="ListarPlaylistsDaMusica"><soap:operation soapAction="http://streaming.exemplo.com/ListarPlaylistsDaMusica"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StreamingService">
+    <wsdl:port name="StreamingPort" binding="tns:StreamingBinding"><soap:address location="http://localhost:3004/soap"/></wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
