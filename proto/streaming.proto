@@ -1,0 +1,41 @@
+syntax = "proto3";
+package streaming;
+
+message Usuario  { int32 id = 1; string nome = 2; int32 idade = 3; }
+message Musica   { int32 id = 1; string nome = 2; string artista = 3; }
+message Playlist { int32 id = 1; string nome = 2; int32 usuario_id = 3; repeated int32 musica_ids = 4; }
+
+message Id          { int32 id = 1; }
+message Vazio       {}
+message Removido    { bool sucesso = 1; }
+message Usuarios    { repeated Usuario  itens = 1; }
+message Musicas     { repeated Musica   itens = 1; }
+message Playlists   { repeated Playlist itens = 1; }
+message AtualizaUsuario  { int32 id = 1; Usuario  dados = 2; }
+message AtualizaMusica   { int32 id = 1; Musica   dados = 2; }
+message AtualizaPlaylist { int32 id = 1; Playlist dados = 2; }
+
+service UsuarioService {
+  rpc Listar    (Vazio)            returns (Usuarios);
+  rpc Obter     (Id)               returns (Usuario);
+  rpc Criar     (Usuario)          returns (Usuario);
+  rpc Atualizar (AtualizaUsuario)  returns (Usuario);
+  rpc Remover   (Id)               returns (Removido);
+  rpc ListarPlaylists (Id)         returns (Playlists);   // playlists do usuário
+}
+service MusicaService {
+  rpc Listar    (Vazio)            returns (Musicas);
+  rpc Obter     (Id)               returns (Musica);
+  rpc Criar     (Musica)           returns (Musica);
+  rpc Atualizar (AtualizaMusica)   returns (Musica);
+  rpc Remover   (Id)               returns (Removido);
+  rpc ListarPlaylists (Id)         returns (Playlists);   // playlists que contêm a música
+}
+service PlaylistService {
+  rpc Listar    (Vazio)            returns (Playlists);
+  rpc Obter     (Id)               returns (Playlist);
+  rpc Criar     (Playlist)         returns (Playlist);
+  rpc Atualizar (AtualizaPlaylist) returns (Playlist);
+  rpc Remover   (Id)               returns (Removido);
+  rpc ListarMusicas (Id)           returns (Musicas);     // músicas da playlist
+}
