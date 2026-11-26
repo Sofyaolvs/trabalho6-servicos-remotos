@@ -32,7 +32,7 @@ const codigo = (s, txt, x, y, w, h, fs = 11) => s.addText(txt, { x, y, w, h, fon
 let s = p.addSlide(); s.background = { color: AZUL };
 s.addText('Comparação de Tecnologias de\nInvocação de Serviços Remotos', { x: 0.7, y: 1.3, w: 12, h: 1.8, fontFace: F, fontSize: 40, bold: true, color: 'FFFFFF' });
 s.addText('SOAP · REST · GraphQL · gRPC\nEstudo com um serviço de streaming de músicas', { x: 0.7, y: 3.2, w: 12, h: 1, fontFace: F, fontSize: 22, color: 'C9D6F2' });
-s.addText('Computação Distribuída — Prof. Nabor C. Mendonça\nEquipe: Sofya Oliveira · [Integrante 2] · [Integrante 3]', { x: 0.7, y: 5, w: 12, h: 1.2, fontFace: F, fontSize: 18, color: 'FFFFFF' });
+s.addText('Computação Distribuída — Prof. Nabor C. Mendonça\nSofya Emilly Oliveira Sousa — 2320314\nPedro Vitor Medeiros Holanda Pequeno — 2315091\nRicardo Filho Sobral Monteiro Ramos — 2310365', { x: 0.7, y: 4.6, w: 12, h: 2, fontFace: F, fontSize: 18, color: 'FFFFFF' });
 
 // 2. Serviço
 s = slide('O serviço de streaming de músicas', 'Mesma regra de negócio (Store em memória) exposta de 4 formas');
